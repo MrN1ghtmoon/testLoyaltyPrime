@@ -36,7 +36,7 @@ services:
       - key: APP_ID
         value: 54517632
       - key: PORT
-        value: 5000
+        value: 10000
       - key: BACKEND_URL
         value: https://loyalty-backend.onrender.com
       - key: USE_LONG_POLL

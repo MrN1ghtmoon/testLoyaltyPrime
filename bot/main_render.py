@@ -11,7 +11,7 @@ from flask_cors import CORS
 TOKEN = os.getenv('VK_TOKEN', '')
 APP_ID = os.getenv('APP_ID', '54517632')
 BACKEND_URL = os.getenv('BACKEND_URL', 'http://localhost:3001')
-PORT = int(os.getenv('PORT', 5000))
+PORT = int(os.getenv('PORT', 10000))
 
 # Для Render отключаем Long Poll (он не работает в бесплатном тайере)
 # Вместо этого используем только Flask API для отправки сообщений
