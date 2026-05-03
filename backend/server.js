@@ -104,13 +104,13 @@ const {
 
 const app = express();
 const allowedOrigins = [
-    'https://stage-app54517632-8d516ae56667.pages.vk-apps.com',
+    'https://stage-app54517632-4dd9aca3f3e3.pages.vk-apps.com',
     'https://*.pages.vk-apps.com',
     'https://*.vk-apps.com',
     'http://localhost:5173',  // для локальной разработки
     'http://localhost:3000'    // для локальной разработки
 ];
-pp.use(cors({
+app.use(cors({
     origin: function(origin, callback) {
         // Разрешаем запросы без origin (например, от VK Mini App)
         if (!origin) return callback(null, true);
