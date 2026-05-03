@@ -1,0 +1,281 @@
+.referral-system {
+    background: rgba(30, 35, 48, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.referral-header h3 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+}
+
+.referral-header p {
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.referral-stats-card {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffd966;
+}
+
+.stat-label {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+/* Секция ввода реферального кода */
+.enter-referral-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.referral-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.referral-input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.referral-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 12px 16px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.referral-input:focus {
+    border-color: #ff4d4d;
+}
+
+.referral-input:disabled {
+    opacity: 0.5;
+}
+
+.referral-submit-btn {
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    border: none;
+    padding: 0 24px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.referral-submit-btn:hover:not(:disabled) {
+    transform: scale(1.02);
+}
+
+.referral-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.referral-error {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #e74c3c;
+}
+
+.referral-success {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #2ecc71;
+}
+
+.referral-used {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #ffd966;
+}
+
+/* Секция с вашим кодом */
+.referral-code-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.code-label {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+.code-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.code {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 14px;
+    border-radius: 12px;
+    flex: 1;
+    word-break: break-all;
+    letter-spacing: 0.5px;
+}
+
+.copy-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.code-hint {
+    font-size: 11px;
+    opacity: 0.5;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Информация о бонусах */
+.referral-bonus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.bonus-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-radius: 16px;
+}
+
+.bonus-icon {
+    font-size: 32px;
+}
+
+.bonus-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.bonus-desc {
+    font-size: 11px;
+    opacity: 0.6;
+    margin-top: 2px;
+}
+
+/* Кнопка приглашения */
+.share-invite-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    padding: 14px;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.2s ease;
+}
+
+.share-invite-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+/* Список приглашенных */
+.referrals-list {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 16px;
+}
+
+.referrals-list h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+}
+
+.referral-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+}
+
+.referral-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.referral-status.active {
+    color: #2ecc71;
+}
+
+.referral-bonus {
+    color: #ffd966;
+    font-weight: 600;
+}
+
+.referral-loading {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.7;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .referral-input-group {
+        flex-direction: column;
+    }
+    
+    .referral-submit-btn {
+        padding: 12px;
+    }
+    
+    .code {
+        font-size: 12px;
+    }
+}

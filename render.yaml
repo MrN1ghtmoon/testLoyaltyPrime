@@ -1,0 +1,54 @@
+services:
+  # Backend API (Node.js)
+  - type: web
+    name: loyalty-backend
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: VK_BOT_URL
+        value: https://loyalty-bot.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: loyalty-db
+          property: connectionString
+      - key: CORS_ORIGIN
+        value: https://stage-app54517632-8d516ae56667.pages.vk-apps.com
+    healthCheckPath: /api/health
+
+  # VK Bot (Python)
+  - type: web
+    name: loyalty-bot
+    runtime: python
+    plan: free
+    rootDir: bot
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main_render:app
+    envVars:
+      - key: VK_TOKEN
+        sync: false
+      - key: APP_ID
+        value: 54517632
+      - key: PORT
+        value: 5000
+      - key: BACKEND_URL
+        value: https://loyalty-backend.onrender.com
+      - key: USE_LONG_POLL
+        value: false
+      - key: PYTHON_VERSION
+        value: 3.10.12
+    healthCheckPath: /health
+
+# База данных PostgreSQL
+databases:
+  - name: loyalty-db
+    plan: free
+    databaseName: loyalty_db
+    user: loyalty_user
+    ipAllowList: []  # Разрешить подключения только изнутри Render

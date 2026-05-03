@@ -1,0 +1,477 @@
+.dice-roll-container {
+    background: linear-gradient(145deg, #1a1f2e, #0f1420);
+    border-radius: 40px;
+    padding: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dice-roll-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd966, #ff4d4d, #ffd966, transparent);
+}
+
+/* Заголовок */
+.dice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.dice-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dice-main-emoji {
+    font-size: 32px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.dice-title h3 {
+    margin: 0;
+    font-size: 22px;
+    background: linear-gradient(135deg, #fff, #ffd966);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.jackpot-display {
+    background: linear-gradient(135deg, #ffd96620, #ff4d4d20);
+    padding: 8px 20px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ffd96640;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+}
+
+.jackpot-icon {
+    font-size: 20px;
+}
+
+.jackpot-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffd966;
+}
+
+/* Множитель ставки */
+.bet-multiplier-section {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.multiplier-label {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.multiplier-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.multiplier-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 30px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.multiplier-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.multiplier-btn.active {
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    border-color: transparent;
+}
+
+.total-cost {
+    font-size: 12px;
+    color: white;
+}
+
+.cost-value {
+    color: #ff4d4d;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Игровая область */
+.dice-game-area {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+}
+
+.dice-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.dice-wrapper {
+    transition: transform 0.1s ease;
+}
+
+.dice-wrapper.rolling {
+    animation: rollDice 0.15s ease-in-out infinite;
+}
+
+@keyframes rollDice {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg) scale(1.1); }
+    75% { transform: rotate(-15deg) scale(1.1); }
+}
+
+/* Нормальный кубик с точками */
+.dice-cube {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(145deg, #fff, #f5f5f5);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+}
+
+.dice-dots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 70%;
+    height: 70%;
+    gap: 5px;
+}
+
+.dice-dot {
+    background: #2c3e50;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+.dice-dot.active {
+    opacity: 1;
+}
+
+.dice-vs {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffd966;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Кнопка броска */
+.dice-controls {
+    margin-bottom: 20px;
+}
+
+.roll-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    border: none;
+    padding: 16px;
+    border-radius: 60px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 8px 20px rgba(255, 77, 77, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.roll-btn:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 77, 77, 0.5);
+}
+
+.roll-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.roll-btn.spinning {
+    background: linear-gradient(135deg, #666, #444);
+    animation: btnPulse 1s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.roll-icon, .spinner-icon {
+    font-size: 22px;
+}
+
+.spinner-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Результат */
+.dice-result {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    animation: slideUp 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.dice-result.win {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+}
+
+.dice-result.lose {
+    background: rgba(255, 255, 255, 0.08);
+    color: #aaa;
+}
+
+.dice-result.jackpot {
+    background: linear-gradient(135deg, #f1c40f, #e67e22);
+    animation: jackpotFlash 0.5s ease-in-out infinite;
+}
+
+@keyframes jackpotFlash {
+    0%, 100% { box-shadow: 0 0 20px rgba(241, 196, 15, 0.5); }
+    50% { box-shadow: 0 0 50px rgba(241, 196, 15, 0.8); }
+}
+
+.result-emoji {
+    font-size: 32px;
+}
+
+.result-message {
+    flex: 1;
+}
+
+.combo-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Последний выигрыш */
+.last-win-card {
+    margin-top: 15px;
+    padding: 12px;
+    background: linear-gradient(135deg, #ffd96620, #ff4d4d20);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ffd966;
+    font-size: 14px;
+    border: 1px solid #ffd96640;
+}
+
+/* Таблица комбинаций */
+.combinations-section {
+    margin-top: 20px;
+}
+
+.combinations-toggle {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 40px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 15px;
+}
+
+.combinations-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.combinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.combo-card {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    border-left: 3px solid;
+    transition: transform 0.2s;
+}
+
+.combo-card:hover {
+    transform: translateY(-2px);
+}
+
+.combo-icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.combo-name {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.combo-multiplier {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffd966;
+    margin-bottom: 4px;
+}
+
+.combo-desc {
+    font-size: 10px;
+    opacity: 0.6;
+    color: white;
+}
+
+/* История */
+.history-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.history-title {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.history-dice {
+    color: #ffd966;
+    font-weight: bold;
+}
+
+.history-combo {
+    color: white;
+    opacity: 0.8;
+}
+
+.history-win {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .dice-roll-container {
+        padding: 16px;
+    }
+    
+    .dice-cube {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .dice-vs {
+        font-size: 20px;
+    }
+    
+    .combinations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .multiplier-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

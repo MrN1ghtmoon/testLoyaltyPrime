@@ -1,0 +1,452 @@
+/* ScratchCard.css - Стили для 3x3 с 3 попытками */
+.scratch-card-3x3 {
+    background: linear-gradient(145deg, #1a1f2e, #0f1420);
+    border-radius: 32px;
+    padding: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.scratch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 8px;
+}
+
+.scratch-header h3 {
+    margin: 0;
+    font-size: 20px;
+    background: linear-gradient(135deg, #fff, #ffd966);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.scratch-cost {
+    background: rgba(255, 77, 77, 0.15);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ff4d4d;
+    border: 1px solid rgba(255, 77, 77, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.game-rules {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.rule-item {
+    font-size: 12px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    color: #aaa;
+}
+
+.game-progress, .found-progress {
+    margin-bottom: 16px;
+}
+
+.progress-text, .found-text {
+    font-size: 13px;
+    color: #ffd966;
+    margin-bottom: 8px;
+}
+
+.progress-bar, .found-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill, .found-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.found-fill {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+}
+
+.hint-symbol {
+    background: rgba(241, 196, 15, 0.15);
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #f1c40f;
+    display: inline-block;
+}
+
+.game-board-3x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.game-cell {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.game-cell:hover:not(.revealed) {
+    transform: translateY(-4px);
+}
+
+.game-cell.hidden {
+    background: linear-gradient(135deg, #2a2f3f, #1a1f2e);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-cell.revealed {
+    animation: revealAnim 0.3s ease;
+}
+
+.game-cell.revealed.winning {
+    animation: winningPulse 0.5s ease;
+}
+
+@keyframes revealAnim {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes winningPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+    50% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+}
+
+.cell-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+}
+
+.cell-emoji {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.cell-name {
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 4px;
+}
+
+.cell-value {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffd966;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cell-cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(
+        45deg,
+        #3a4a6e,
+        #3a4a6e 10px,
+        #2a3a5e 10px,
+        #2a3a5e 20px
+    );
+}
+
+.cover-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+.cover-text {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.game-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.new-game-btn, .hint-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.new-game-btn {
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+}
+
+.new-game-btn:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 77, 77, 0.4);
+}
+
+.hint-btn {
+    background: rgba(241, 196, 15, 0.2);
+    color: #f1c40f;
+    border: 1px solid rgba(241, 196, 15, 0.3);
+}
+
+.hint-btn:hover:not(:disabled) {
+    background: rgba(241, 196, 15, 0.3);
+    transform: scale(1.02);
+}
+
+.new-game-btn:disabled, .hint-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.game-result {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 40px;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.game-result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.game-result.win {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    box-shadow: 0 4px 20px rgba(46, 204, 113, 0.3);
+}
+
+.game-result.lose {
+    background: rgba(255, 255, 255, 0.08);
+    color: #aaa;
+}
+
+.result-icon {
+    font-size: 28px;
+}
+
+.result-text {
+    font-size: 13px;
+}
+
+.last-win {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #ffd966;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 10px;
+    border-radius: 40px;
+}
+
+.multiplier-info {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-title {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.multiplier-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.multiplier-item {
+    display: flex;
+    gap: 4px;
+    font-size: 12px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+.multiplier-item span:first-child {
+    font-size: 14px;
+}
+
+.multiplier-item span:last-child {
+    color: #ffd966;
+    font-weight: 600;
+}
+
+.confetti-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    background: var(--color);
+    animation: confettiFall 2.5s ease-out forwards;
+    animation-delay: var(--delay);
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateX(0) translateY(-20px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(var(--x)) translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti-text {
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffd966, #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textPop 0.5s ease-out;
+}
+
+@keyframes textPop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .scratch-card-3x3 {
+        padding: 16px;
+    }
+    
+    .game-board-3x3 {
+        gap: 8px;
+    }
+    
+    .cell-emoji {
+        font-size: 24px;
+    }
+    
+    .cell-name {
+        font-size: 8px;
+    }
+    
+    .cell-value {
+        font-size: 10px;
+    }
+    
+    .cover-icon {
+        font-size: 20px;
+    }
+    
+    .new-game-btn, .hint-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .game-rules {
+        gap: 8px;
+    }
+    
+    .rule-item {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    
+    .multiplier-item {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+}/* Добавьте в конец ScratchCard.css */
+
+/* Анимация для баннера бесплатной подсказки */
+.free-hint-banner {
+    animation: pulse-purple 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-purple {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(155, 89, 182, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(155, 89, 182, 0);
+    }
+}
+
+/* Стиль для информационного результата */
+.game-result.info {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+}
