@@ -19,7 +19,7 @@ services:
           name: loyalty-db
           property: connectionString
       - key: CORS_ORIGIN
-        value: https://stage-app54517632-8d516ae56667.pages.vk-apps.com
+        value: https://stage-app54517632-f71332421a6e.pages.vk-apps.com
     healthCheckPath: /api/health
 
   # VK Bot (Python)

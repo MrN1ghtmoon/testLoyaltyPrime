@@ -104,7 +104,7 @@ const {
 
 const app = express();
 const allowedOrigins = [
-    'https://stage-app54517632-4dd9aca3f3e3.pages.vk-apps.com',
+    'https://stage-app54517632-f71332421a6e.pages.vk-apps.com',
     'https://*.pages.vk-apps.com',
     'https://*.vk-apps.com',
     'http://localhost:5173',  // для локальной разработки

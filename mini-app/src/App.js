@@ -11,21 +11,14 @@ import { Giveaways } from './components/Giveaways';
 
 // Определяем API_URL в зависимости от окружения
 const getApiUrl = () => {
-  // Для локальной разработки
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return 'http://localhost:3001';
+  if (window.location.hostname === 'localhost') {
+    return 'http://localhost:3001';  // без /api
   }
-  
-  // Для VK Hosting (production)
-  // Используем переменную окружения или fallback на Render URL
   if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
+    return import.meta.env.VITE_API_URL;  
   }
-  
-  // Fallback - ваш URL на Render
-  return 'https://loyalty-backend.onrender.com';
+  return 'https://loyalty-backend.onrender.com';  
 };
-
 const API_URL = getApiUrl();
 
 // Для отладки - выводим в консоль, какой URL используется
@@ -109,7 +102,7 @@ const getNextTierBySpent = (spent) => {
     const fetchCompanies = async () => {
       setLoadingCompanies(true);
       try {
-        const response = await fetch(`${API_URL}/api/companies/list`);
+        const response = await fetch(`${API_URL}/companies/list`);
         if (response.ok) {
           const companies = await response.json();
           if (companies && companies.length > 0) {
