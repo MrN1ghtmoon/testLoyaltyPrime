@@ -104,7 +104,7 @@ const {
 
 const app = express();
 const allowedOrigins = [
-    'https://stage-app54517632-f71332421a6e.pages.vk-apps.com',
+    'https://stage-app54517632-4dd9aca3f3e3.pages.vk-apps.com',
     'https://*.pages.vk-apps.com',
     'https://*.vk-apps.com',
     'http://localhost:5173',  // для локальной разработки
@@ -2554,7 +2554,7 @@ app.post('/api/companies/:companyId/notifications/send', async (req, res) => {
         );
         
         // Отправляем уведомления через бота
-        const botUrl = '${VK_BOT_URL}/send_messages';
+        const botUrl = `${VK_BOT_URL}/send_messages`;
         const payload = {
             company_id: parseInt(companyId),
             notification_id: result.rows[0].id,
@@ -2717,7 +2717,7 @@ app.post('/api/campaigns/:campaignId/execute', async (req, res) => {
         
         // Отправляем уведомления через бота немедленно
         if (result.success && result.users && result.users.length > 0) {
-            const botUrl = 'http://localhost:5000/send_campaign_messages';
+            const botUrl = `${VK_BOT_URL}/send_campaign_messages`;
             const campaignData = {
                 campaign_id: campaignId,
                 title: result.campaign.title,
@@ -3010,7 +3010,15 @@ app.post('/api/companies/:companyId/greeting-settings', async (req, res) => {
         res.status(500).json({ success: false, error: error.message });
     }
 });
-
+app.get('/companies/list', async (req, res) => {
+    try {
+        const companies = await getAllCompanies();
+        res.json(companies);
+    } catch (error) {
+        console.error('Ошибка получения компаний:', error);
+        res.status(500).json({ error: 'Ошибка сервера' });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`✅ Backend running on port ${PORT}`);
